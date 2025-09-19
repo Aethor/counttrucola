@@ -1,5 +1,5 @@
 #     CountTRuCoLa
-Temporal Rule Learning forTemporal Knowledge Graph Forecasting
+Temporal Rule Confidence Learning forTemporal Knowledge Graph Forecasting
 
 
 <img width="414" height="394" alt="grafik" src="https://github.com/user-attachments/assets/9093b6b7-6987-4a94-a9dd-879acc322a5a" />
