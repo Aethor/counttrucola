@@ -1,6 +1,5 @@
 #     Explaining Temporal Knowledge Graph Forecasting with CountTRuCoLa
 
-Gastinger, Julia; Meilicke, Christian; and Stuckenschmidt, Heiner 2025. 
 
 <img width="414" height="394" alt="grafik" src="https://github.com/user-attachments/assets/9093b6b7-6987-4a94-a9dd-879acc322a5a" />
 
@@ -119,22 +118,4 @@ These output files help you focus on cases where the better ranking file provide
 * [TGB 2.0 code](https://github.com/shenyangHuang/TGB)
 * [other datasets](https://github.com/nec-research/TKG-Forecasting-Evaluation/tree/main/data)
   
-```
-TGB 2.0 (evaluation and some datasets)
-@article{huang2024tgb2,
-  title={TGB 2.0: A Benchmark for Learning on Temporal Knowledge Graphs and Heterogeneous Graphs},
-  author={Gastinger, Julia and Huang, Shenyang and Galkin, Mikhail and Loghmani, Erfan and Parviz, Ali and Poursafaei, Farimah and Danovitch, Jacob and Rossi, Emanuele and Koutis, Ioannis and Stuckenschmidt, Heiner and      Rabbany, Reihaneh and Rabusseau, Guillaume},
-  journal={Advances in Neural Information Processing Systems},
-  year={2024}
-}
 
-Evaluation Paper (remaining datasets and splits)
-@inproceedings{gastinger2023comparing,
-  title={Comparing apples and oranges? on the evaluation of methods for temporal knowledge graph forecasting},
-  author={Gastinger, Julia and Sztyler, Timo and Sharma, Lokesh and Schuelke, Anett and Stuckenschmidt, Heiner},
-  booktitle={Joint European conference on machine learning and knowledge discovery in databases},
-  pages={533--549},
-  year={2023},
-  organization={Springer}
-}
-```
