@@ -5,8 +5,8 @@
 
 ########## CATEGORY 1: Configuration Parameters, like dataset, paths, cpus etc.########
 DATASET_NAME: tkgl-icews14 
-RANKINGS_PATH: default # /ceph/jgasting/rucola/rankings/ # path to the rankings folder, where the rankings are stored; only specify if you do not want to use the default path, which is the current working directory + '/rankings/'
-LEARN_DATA_PATH: default # /ceph/jgasting/rucola/learn_data/ # path to the learn data folder, where the learn data is stored; only specify if you do not want to use the default path, which is the current working directory + '/learn_data/'
+RANKINGS_PATH: default # path to the rankings folder, where the rankings are stored; only specify if you do not want to use the default path, which is the current working directory + '/rankings/'
+LEARN_DATA_PATH: default  # path to the learn data folder, where the learn data is stored; only specify if you do not want to use the default path, which is the current working directory + '/learn_data/'
 
 
 ####### all sorts of flags: do we want to learn params and so on
