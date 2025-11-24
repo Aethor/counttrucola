@@ -32,7 +32,9 @@ def sort_out_pathnames(options, dataset_name):
         rankings_dir = options['RANKINGS_PATH']
     if not os.path.isdir(rankings_dir):
             os.makedirs(rankings_dir)
-    rankings_name = dataset_name + "-rankings{}.txt"
+    window_size = str(options["LEARN_WINDOW_SIZE"])
+    rankings_name = dataset_name + window_size + "-rankings{}.txt"
+
 
     results_dir = os.path.join("files", "results")
     if not os.path.isdir(results_dir):
@@ -127,6 +129,7 @@ def get_path_rules_name(options, rules_dir, dataset_name):
         all_rule_types_false = False
     if options['MULTI_FLAG'] == True:
         rule_name += '-multi'
+    rule_name += '-' + 'window'+str(options["LEARN_WINDOW_SIZE"] )
     rule_name+= '-'+ str(options["THRESHOLD_CORRECT_PREDICTIONS"]) + '-' + str(options["THRESHOLD_CONFIDENCE"]) 
     path_rules = os.path.join(rules_dir, dataset_name+rule_name+"-ruleset-{}.txt")     
 
@@ -163,8 +166,8 @@ def delete_rankings(path_rankings):
     else:
         print(f"The file {path_rankings} does not exist")  
         
-def write_config_and_results(results_path, options, dataset_name, path_rankings_test, testmrr, testhits100, testhits10, testhits1, 
-                             valmrr, valhits100, valhits10, valhits1, number_of_rules, mse_curvefit, large_data_flag, very_large_data_flag,
+def write_config_and_results(results_path, options, dataset_name, path_rankings_test, testmrr, testhits100, testhits10, testhits3, testhits1, 
+                             valmrr, valhits100, valhits10, valhits3, valhits1, number_of_rules, mse_curvefit, large_data_flag, very_large_data_flag,
                              totaltime, evaltime, applytime, learntime, learndatatime):
     """ write the config and results to a csv file, that contains all params, results, runtime, etc.
      if the file already exists, append the results to the file."""
@@ -212,11 +215,13 @@ def write_config_and_results(results_path, options, dataset_name, path_rankings_
         params['eval_testmrr'] = testmrr
         params['eval_testhits100'] = testhits100
         params['eval_testhits10'] = testhits10
+        params['eval_testhits3'] = testhits3
         params['eval_testhits1'] = testhits1
     if options["EVAL_VALSET_FLAG"]:
         params['eval_valmrr'] = valmrr        
         params['eval_valhits100'] = valhits100
         params['eval_valhits10'] = valhits10
+        params['eval_valhits3'] = valhits3
         params['eval_valhits1'] = valhits1
     params['time_totaltime'] = totaltime
     params['time_evaltime'] = evaltime

@@ -23,7 +23,7 @@ def evaluate(rule_dataset, path_rankings, progressbar_percentage, evaluation_mod
     dataset = rule_dataset.dataset
     num_nodes = rule_dataset.dataset.num_nodes
     split_mode = evaluation_mode
-    evaluator = Evaluator(name=dataset.name, k_value=[1,10,100])
+    evaluator = Evaluator(name=dataset.name, k_value=[1, 3, 10,100])
     neg_sampler = dataset.negative_sampler  
     
     #print("MEM after init evaluator : " +  str(process.memory_info().rss//1000000))
@@ -44,6 +44,7 @@ def evaluate(rule_dataset, path_rankings, progressbar_percentage, evaluation_mod
     perf_list = np.zeros(len(testdata))
     hits10_list = np.zeros(len(testdata))
     hits1_list = np.zeros(len(testdata))
+    hits3_list = np.zeros(len(testdata))
     hits100_list = np.zeros(len(testdata))
 
     if eval_type == 'random':
@@ -105,6 +106,7 @@ def evaluate(rule_dataset, path_rankings, progressbar_percentage, evaluation_mod
             perf_list[i] = float(predictions['mrr'])
             hits10_list[i] = float(predictions['hits@10'])
             hits1_list[i] = float(predictions['hits@1'])
+            hits3_list[i] = float(predictions['hits@3'])
             hits100_list[i] = float(predictions['hits@100'])
             i_list.append(i)
 
@@ -141,17 +143,18 @@ def evaluate(rule_dataset, path_rankings, progressbar_percentage, evaluation_mod
     mrr = float(np.mean(perf_list))
     hits10 = float(np.mean(hits10_list))
     hits1 = float(np.mean(hits1_list))
+    hits3 = float(np.mean(hits3_list))
     hits100 = float(np.mean(hits100_list))
 
     # Print evaluation results
     print('eval mode:', split_mode)
     print('mean mrr:', mrr)
     print('mean hits@1:', hits1)
+    print('mean hits@3:', hits3)
     print('mean hits@10:', hits10)
     print('mean hits@100:', hits100)
     print('time to evaluate:', time.time()-start3)
-    return mrr, hits10, hits1, hits100, mrr_per_rel, hit1_per_rel, mrr_per_ts, hit1_per_ts
-
+    return mrr, hits10, hits1, hits3, hits100, mrr_per_rel, hit1_per_rel, mrr_per_ts, hit1_per_ts
 # for quick test purposes /quick evaluations
 if __name__ == "__main__":
     

@@ -97,15 +97,15 @@ def main(options_call=None):
     print('time to apply the rules: ', applytime)
 
     ## evaluate: compute the MRR and hits scores based on the computed rankings; experimental setup: section 5.1
-    testmrr, testhits10, testhits1,testhits100, valmrr, valhits10, valhits1, valhits100 = -1,-1,-1,-1,-1,-1, -1,-1
+    testmrr, testhits10, testhits1, testhits3, testhits100, valmrr, valhits10, valhits1, valhits3, valhits100 = -1,-1,-1,-1,-1,-1, -1,-1,-1,-1
     valmrrperrel,valhits1perrel,  testmrrperrel, testhits1perrel = {}, {}, {}, {}
     startevaltime = timeit.default_timer()
     if options['EVAL_TESTSET_FLAG']:
         print('-----------------compute the test MRR, using path rankings from ', path_rankings_test)  
-        testmrr, testhits10, testhits1, testhits100, testmrrperrel, testhits1perrel, testmrrperts, testhits1perts =evaluate(ruledataset, path_rankings_test, progressbar_percentage=0.01, evaluation_mode='test', eval_type=options['EVAL_TYPE'])
+        testmrr, testhits10, testhits1, testhits3, testhits100, testmrrperrel, testhits1perrel, testmrrperts, testhits1perts =evaluate(ruledataset, path_rankings_test, progressbar_percentage=0.01, evaluation_mode='test', eval_type=options['EVAL_TYPE'])
     if options["EVAL_VALSET_FLAG"]:
         print('-----------------compute the val MRR, using path rankings from ', path_rankings_val)  
-        valmrr, valhits10, valhits1, valhits100, valmrrperrel,valhits1perrel, valmrrperts, valhits1perts =evaluate(ruledataset, path_rankings_val, progressbar_percentage=0.01, evaluation_mode='val', eval_type=options['EVAL_TYPE'])
+        valmrr, valhits10, valhits1, valhits3, valhits100, valmrrperrel,valhits1perrel, valmrrperts, valhits1perts =evaluate(ruledataset, path_rankings_val, progressbar_percentage=0.01, evaluation_mode='val', eval_type=options['EVAL_TYPE'])
     evaltime =  timeit.default_timer()- startevaltime
     print('eval time: ', evaltime )
     endtime = timeit.default_timer()
@@ -114,8 +114,8 @@ def main(options_call=None):
 
 
     ## logging: write the config and results to file
-    utils.write_config_and_results(results_path, options, dataset_name, path_rankings_test, testmrr, testhits100, testhits10, testhits1, 
-                             valmrr, valhits100, valhits10, valhits1, number_of_rules, mse_curvefit, ruledataset.large_data_flag, ruledataset.very_large_data_flag,
+    utils.write_config_and_results(results_path, options, dataset_name, path_rankings_test, testmrr, testhits100, testhits10, testhits3, testhits1, 
+                             valmrr, valhits100, valhits10, valhits3, valhits1, number_of_rules, mse_curvefit, ruledataset.large_data_flag, ruledataset.very_large_data_flag,
                              totaltime, evaltime, applytime, learntime, learndatatime)
     if options["EVAL_TESTSET_FLAG"]:
         utils.write_ranksperrel(testmrrperrel, testhits1perrel, results_dir, dataset_name, 'test', options['Z_RULES_FACTOR'])
