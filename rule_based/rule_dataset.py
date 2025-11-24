@@ -109,6 +109,8 @@ class RuleDataset:
         # the index is created only for train
         self.time_head_rel_tails = {}
 
+        self.head_rel_ts_tail = {}
+
         self.head_rel_t_tail ={} # only used in explain mode
 
         for quad in self.train_data: self.index(int(quad[0]), int(quad[1]), int(quad[2]), int(quad[3]), "train")
@@ -366,21 +368,31 @@ class RuleDataset:
                 self.time_head_rel_tails[t][head][rel] = set()
             self.time_head_rel_tails[t][head][rel].add(tail)
             
+        # if split == 'test':
+        #     if not split in self.head_rel_ts_tail:
+        #         self.head_rel_ts_tail[split] = {}
+        #     if not head in self.head_rel_ts_tail[split]:
+        #         self.head_rel_ts_tail[split][head] = {}
+        #     if not rel in self.head_rel_ts_tail[split][head]:
+        #         self.head_rel_ts_tail[split][head][rel] = {}
+        #     if not t in self.head_rel_ts_tail[split][head][rel]:
+        #         self.head_rel_ts_tail[split][head][rel][t] = []
+        #     self.head_rel_ts_tail[split][head][rel][t].append(tail)
     
 
-        # if split == 'explain':
-        #     # filling 'exists tail' datastructure (list variant)
-        #     if not split in self.head_rel_t_tail:
-        #         self.head_rel_t_tail[split] = {}
-        #     if not head in self.head_rel_t_tail[split]:
-        #         self.head_rel_t_tail[split][head] = {}
-        #     if not rel in self.head_rel_t_tail[split][head]:
-        #         self.head_rel_t_tail[split][head][rel] = {}
-        #     if not t in self.head_rel_t_tail[split][head][rel]:
-        #         # this check is required to avoid duplicates in the list
-        #         # which might happen due to the "exists"
-        #         self.head_rel_t_tail[split][head][rel][t] = []
-        #     self.head_rel_t_tail[split][head][rel][t].append(tail)
+        if split == 'test':
+            # filling 'exists tail' datastructure (list variant)
+            if not split in self.head_rel_t_tail:
+                self.head_rel_t_tail[split] = {}
+            if not head in self.head_rel_t_tail[split]:
+                self.head_rel_t_tail[split][head] = {}
+            if not rel in self.head_rel_t_tail[split][head]:
+                self.head_rel_t_tail[split][head][rel] = {}
+            if not t in self.head_rel_t_tail[split][head][rel]:
+                # this check is required to avoid duplicates in the list
+                # which might happen due to the "exists"
+                self.head_rel_t_tail[split][head][rel][t] = []
+            self.head_rel_t_tail[split][head][rel][t].append(tail)
         
 
     def create_explain_gt_index(self, mode):
