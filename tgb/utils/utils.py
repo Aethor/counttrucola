@@ -28,6 +28,9 @@ def add_inverse_quadruples(df: pd.DataFrame) -> pd.DataFrame:
     edge_idxs = np.array(df["idx"])
     weights = np.array(df["w"])
     edge_type = np.array(df["edge_type"])
+    if "split" in df.columns:
+        has_split = True
+        split = np.array(df["split"])
 
     num_rels = np.unique(edge_type).shape[0]
     inv_edge_type = edge_type + num_rels
@@ -39,17 +42,23 @@ def add_inverse_quadruples(df: pd.DataFrame) -> pd.DataFrame:
     all_weights = np.concatenate([weights, weights])
     all_edge_types = np.concatenate([edge_type, inv_edge_type])
 
-    return pd.DataFrame(
-            {
-                "u": all_sources,
-                "i": all_destinations,
-                "ts": all_timestamps,
-                "label": np.ones(all_timestamps.shape[0]),
-                "idx": all_edge_idxs,
-                "w": all_weights,
-                "edge_type": all_edge_types,
-            }
-        )
+    df = pd.DataFrame(
+        {
+            "u": all_sources,
+            "i": all_destinations,
+            "ts": all_timestamps,
+            "label": np.ones(all_timestamps.shape[0]),
+            "idx": all_edge_idxs,
+            "w": all_weights,
+            "edge_type": all_edge_types,
+        }
+    )
+
+    if has_split:
+        all_splits = np.concatenate([split, split])
+        df["split"] = all_splits
+
+    return df
 
 
 

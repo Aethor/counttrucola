@@ -22,13 +22,14 @@ class BColors:
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
 
+
 DATA_URL_DICT = {
-    "tgbl-wiki":"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-wiki-v2.zip", #"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-wiki.zip", #v1
-    "tgbl-subreddit":"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-subreddit.zip",
-    "tgbl-lastfm":"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-lastfm.zip",
-    "tgbl-review": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-review-v2.zip", #"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-review.zip", #v1
-    "tgbl-coin": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-coin-v2.zip", #"https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-coin.zip",
-    "tgbl-flight": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-flight-v2.zip", #"tgbl-flight": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-flight_edgelist_v2_ts.zip",
+    "tgbl-wiki": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-wiki-v2.zip",  # "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-wiki.zip", #v1
+    "tgbl-subreddit": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-subreddit.zip",
+    "tgbl-lastfm": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-lastfm.zip",
+    "tgbl-review": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-review-v2.zip",  # "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-review.zip", #v1
+    "tgbl-coin": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-coin-v2.zip",  # "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-coin.zip",
+    "tgbl-flight": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-flight-v2.zip",  # "tgbl-flight": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-flight_edgelist_v2_ts.zip",
     "tgbl-comment": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbl-comment.zip",
     "tgbn-trade": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbn-trade.zip",
     "tgbn-genre": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbn-genre.zip",
@@ -36,25 +37,26 @@ DATA_URL_DICT = {
     "tgbn-token": "https://object-arbutus.cloud.computecanada.ca/tgb/tgbn-token.zip",
     "tkgl-polecat": "https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-polecat.zip",
     "tkgl-icews": "https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-icews.zip",
-    "tkgl-yago":"https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-yago.zip",
+    "tkgl-yago": "https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-yago.zip",
+    "tkgl-yago4.5": "https://cloud.klmp200.net/index.php/s/ia93c2sHgQywHgF/download",
     "tkgl-wikidata": "https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-wikidata.zip",
     "tkgl-smallpedia": "https://object-arbutus.cloud.computecanada.ca/tgb/tkgl-smallpedia.zip",
     "thgl-myket": "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-myket.zip",
     "thgl-github": "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-github.zip",
     "thgl-forum": "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-forum.zip",
-    "thgl-software": "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-software.zip", #"https://object-arbutus.cloud.computecanada.ca/tgb/thgl-software_ns_random.zip"
-    "tkgl-icews14": 'https://drive.google.com/uc?id=1Klc16EY8PEe04S704mGGvLcnNL0E-42B&export=download',# added by counttrucola authors
-    "tkgl-icews18": "https://drive.google.com/uc?id=1FPQE014gZ9n-yNicMu4iKosMv-54R17L&export=download", # added by counttrucola authors
-    "tkgl-wikiold": "https://drive.google.com/uc?id=1V-oO6usWiVzkyiDRfD87Zj-K9sup1QmP&export=download", # added by counttrucola authors
-    "tkgl-gdelt": "https://drive.google.com/uc?id=1QPNJZhu9GqjubCsFdoCt26FFls3X3zfW&export=download", # added by counttrucola authors
-    "tkgl-muffi": "https://drive.google.com/uc?id=149SGipvBmLAqUPxl4WzfJ6KT9S0xX123&export=download", # added by counttrucola authors
-    "tkgl-mini": "https://drive.google.com/uc?id=149SGipvBmLAqUPxl4WzfJ6KT9S0xX123&export=download", # added by counttrucola authors
-    "tkgl-monkey": "https://drive.google.com/uc?id=1SsOEpbUqA_W4O0b2gBhLLHm1xQfo4YTh&export=download" , # added by counttrucola authors
-    "tkgl-pig": "https://drive.google.com/uc?id=1JQzTOuiqS93OeWbn9iu4FsSdqJ0QdvUt&export=download", # added by counttrucola authors
-    "tkgl-crisis2023": "https://drive.google.com/uc?id=1GqcrUhcUPY6ND7AD7Vgpxt8xR1ctO7vx&export=download", # added by counttrucola authors
-} 
+    "thgl-software": "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-software.zip",  # "https://object-arbutus.cloud.computecanada.ca/tgb/thgl-software_ns_random.zip"
+    "tkgl-icews14": "https://drive.google.com/uc?id=1Klc16EY8PEe04S704mGGvLcnNL0E-42B&export=download",  # added by counttrucola authors
+    "tkgl-icews18": "https://drive.google.com/uc?id=1FPQE014gZ9n-yNicMu4iKosMv-54R17L&export=download",  # added by counttrucola authors
+    "tkgl-wikiold": "https://drive.google.com/uc?id=1V-oO6usWiVzkyiDRfD87Zj-K9sup1QmP&export=download",  # added by counttrucola authors
+    "tkgl-gdelt": "https://drive.google.com/uc?id=1QPNJZhu9GqjubCsFdoCt26FFls3X3zfW&export=download",  # added by counttrucola authors
+    "tkgl-muffi": "https://drive.google.com/uc?id=149SGipvBmLAqUPxl4WzfJ6KT9S0xX123&export=download",  # added by counttrucola authors
+    "tkgl-mini": "https://drive.google.com/uc?id=149SGipvBmLAqUPxl4WzfJ6KT9S0xX123&export=download",  # added by counttrucola authors
+    "tkgl-monkey": "https://drive.google.com/uc?id=1SsOEpbUqA_W4O0b2gBhLLHm1xQfo4YTh&export=download",  # added by counttrucola authors
+    "tkgl-pig": "https://drive.google.com/uc?id=1JQzTOuiqS93OeWbn9iu4FsSdqJ0QdvUt&export=download",  # added by counttrucola authors
+    "tkgl-crisis2023": "https://drive.google.com/uc?id=1GqcrUhcUPY6ND7AD7Vgpxt8xR1ctO7vx&export=download",  # added by counttrucola authors
+}
 DATA_VERSION_DICT = {
-    "tgbl-wiki": 2,  
+    "tgbl-wiki": 2,
     "tgbl-subreddit": 1,
     "tgbl-lastfm": 1,
     "tgbl-review": 2,
@@ -68,6 +70,7 @@ DATA_VERSION_DICT = {
     "tkgl-polecat": 1,
     "tkgl-icews": 1,
     "tkgl-yago": 1,
+    "tkgl-yago4.5": 1,
     "tkgl-icews14": 1,
     "tkgl-icews18": 1,
     "tkgl-gdelt": 1,
@@ -95,6 +98,7 @@ DATA_EVAL_METRIC_DICT = {
     "tgbl-flight": "mrr",
     "tkgl-polecat": "mrr",
     "tkgl-yago": "mrr",
+    "tkgl-yago4.5": "mrr",
     "tkgl-icews14": "mrr",
     "tkgl-muffi": "mrr",
     "tkgl-mini": "mrr",
@@ -127,6 +131,7 @@ DATA_NS_STRATEGY_DICT = {
     "tgbl-flight": "hist_rnd",
     "tkgl-polecat": "time-filtered",
     "tkgl-yago": "time-filtered",
+    "tkgl-yago4.5": "time-filtered",
     "tkgl-icews14": "time-filtered",
     "tkgl-icews18": "time-filtered",
     "tkgl-muffi": "time-filtered",

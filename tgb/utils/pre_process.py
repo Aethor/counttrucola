@@ -353,6 +353,8 @@ def csv_to_tkg_data(
     i_list = np.zeros(num_lines)
     ts_list = np.zeros(num_lines)
     label_list = np.zeros(num_lines)
+    split_list = np.zeros(num_lines) # 0: train, 1: valid, 2: test
+    has_split = False
     edge_type = np.zeros(num_lines)
     feat_l = np.zeros((num_lines, feat_size))
     idx_list = np.zeros(num_lines)
@@ -364,7 +366,7 @@ def csv_to_tkg_data(
     with open(fname, "r") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         idx = 0
-        #timestamp, head, tail, relation type
+        #timestamp, head, tail, relation type, split (optional)
         for row in tqdm(csv_reader):
             if idx == 0:
                 idx += 1
@@ -388,8 +390,11 @@ def csv_to_tkg_data(
                 idx_list[idx - 1] = idx
                 w_list[idx - 1] = float(1)
                 edge_type[idx - 1] = relation
+                if len(row) > 4:
+                    split_list[idx - 1] = row[4]
+                    has_split = True
                 idx += 1
-    if 'yago' in fname or 'icews14' in fname or 'icews18' in fname or 'wikiold' in fname or 'gdelt' or 'monkey' or 'pig' or 'crisis' in fname:
+    if 'yago4.5' in fname or 'yago' in fname or 'icews14' in fname or 'icews18' in fname or 'wikiold' in fname or 'gdelt' or 'monkey' or 'pig' or 'crisis' in fname:
         input_file = 'entity2id.txt'
         input_file_rel = "relation2id.txt"
     elif 'muffi' in fname:
@@ -403,21 +408,21 @@ def csv_to_tkg_data(
     import json
     with open(fname+'mapping.json', 'w') as file:
         json.dump(node_ids, file, indent=4)
-    return (
-        pd.DataFrame(
-            {
-                "u": u_list,
-                "i": i_list,
-                "ts": ts_list,
-                "label": label_list,
-                "idx": idx_list,
-                "w": w_list,
-                "edge_type": edge_type,
-            }
-        ),
-        feat_l,
-        node_ids,
+
+    df = pd.DataFrame(
+        {
+            "u": u_list,
+            "i": i_list,
+            "ts": ts_list,
+            "label": label_list,
+            "idx": idx_list,
+            "w": w_list,
+            "edge_type": edge_type,
+        }       
     )
+    if has_split:
+        df["split"] = split_list
+    return (df, feat_l, node_ids)
 
 def write_mappings_to_csv(node_ids:dict, fname:str, input_file:str="None", input_file_rel:str="None", rel_ids=None):
     """

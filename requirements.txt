@@ -6,6 +6,7 @@ scikit-learn
 requests
 matplotlib
 seaborn
-flatdict
+flatdict==4.0.0
 pyyaml
 ray
+psutil

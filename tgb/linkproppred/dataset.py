@@ -310,6 +310,8 @@ class LinkPropPredDataset(object):
                 df, edge_feat, node_ids = csv_to_tkg_data(self.meta_dict["fname"])
             elif self.name == "tkgl-yago":
                 df, edge_feat, node_ids = csv_to_tkg_data(self.meta_dict["fname"])
+            elif self.name == "tkgl-yago4.5":
+                df, edge_feat, node_ids = csv_to_tkg_data(self.meta_dict["fname"])
             elif self.name == 'tkgl-icews14':
                 df, edge_feat, node_ids = csv_to_tkg_data(self.meta_dict["fname"])
             elif self.name == 'tkgl-icews18':
@@ -394,6 +396,8 @@ class LinkPropPredDataset(object):
             "w": weights,
             "edge_label": edge_label,
         }
+        if "split" in df.columns:
+            full_data["split"] = np.array(df["split"])
 
         #* for tkg and thg
         if ("edge_type" in df):
@@ -403,7 +407,10 @@ class LinkPropPredDataset(object):
 
         self._full_data = full_data
 
-        if ("yago" in self.name):
+        if ("yago4.5" in self.name):
+            assert "split" in full_data
+            _train_mask, _val_mask, _test_mask = self.preexisting_splits(full_data)
+        elif ("yago" in self.name):
             _train_mask, _val_mask, _test_mask = self.generate_splits(full_data, val_ratio=0.1, test_ratio=0.10) #99) #val_ratio=0.097, test_ratio=0.099)
         elif ("icews14" in self.name): # this number matches the split in: https://github.com/nec-research/TKG-Forecasting-Evaluation/blob/main/data/ICEWS14/test.txt
             _train_mask, _val_mask, _test_mask = self.generate_splits(full_data, val_ratio=0.095, test_ratio=0.082) 
@@ -451,6 +458,15 @@ class LinkPropPredDataset(object):
         val_mask = np.logical_and(timestamps <= test_time, timestamps > val_time)
         test_mask = timestamps > test_time
 
+        return train_mask, val_mask, test_mask
+
+    def preexisting_splits(
+        self,
+        full_data: Dict[str, Any],
+    ) -> Tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any]]:
+        train_mask = full_data["split"] == 0
+        val_mask = full_data["split"] == 1
+        test_mask = full_data["split"] == 2
         return train_mask, val_mask, test_mask
     
     def preprocess_static_edges(self):

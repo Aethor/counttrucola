@@ -14,7 +14,7 @@ Temporal Rule Confidence Learning forTemporal Knowledge Graph Forecasting
 `python rule_based/main.py` 
 
 or, if you want to specify a certain dataset
-`python rule_based/main.py --params DATASET_NAME tkgl-icews14`
+`python rule_based/main.py --params DATASET_NAME=tkgl-icews14`
 options for datasets: `tkgl-icews14, tkgl-yago, tkgl-wikiold, tkgl-smallpedia, tkgl-polecat, tkgl-icews18, tkgl-gdelt, tkgl-wikidata, tkgl-icews`
 
 This runs all steps:
