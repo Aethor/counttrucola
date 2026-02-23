@@ -1,7 +1,7 @@
 import time
 import sys
 
-sys.path.insert(0,'/../../../')
+sys.path.insert(0, "../../../")
 from tgb.linkproppred.tkg_negative_generator import TKGNegativeEdgeGenerator
 from tgb.linkproppred.dataset_pyg import PyGLinkPropPredDataset
 
@@ -13,10 +13,9 @@ def main():
     print("*** Negative Sample Generation ***")
 
     # setting the required parameters
-    num_neg_e_per_pos = -1 
+    num_neg_e_per_pos = -1
     neg_sample_strategy = "time-filtered"
     rnd_seed = 42
-
 
     name = "tkgl-yago4.5"
     dataset = PyGLinkPropPredDataset(name=name, root="datasets")
@@ -25,16 +24,13 @@ def main():
     test_mask = dataset.test_mask
     data = dataset.get_TemporalData()
 
-
-
     data_splits = {}
-    data_splits['train'] = data[train_mask]
-    data_splits['val'] = data[val_mask]
-    data_splits['test'] = data[test_mask]
+    data_splits["train"] = data[train_mask]
+    data_splits["val"] = data[val_mask]
+    data_splits["test"] = data[test_mask]
 
     # Ensure to only sample actual destination nodes as negatives.
     min_dst_idx, max_dst_idx = int(data.dst.min()), int(data.dst.max())
-
 
     neg_sampler = TKGNegativeEdgeGenerator(
         dataset_name=name,
@@ -55,7 +51,9 @@ def main():
         f"INFO: Start generating negative samples: {split_mode} --- {neg_sample_strategy}"
     )
     neg_sampler.generate_negative_samples(
-        pos_edges=data_splits[split_mode], split_mode=split_mode, partial_path=partial_path
+        pos_edges=data_splits[split_mode],
+        split_mode=split_mode,
+        partial_path=partial_path,
     )
     print(
         f"INFO: End of negative samples generation. Elapsed Time (s): {time.time() - start_time: .4f}"
@@ -68,7 +66,9 @@ def main():
         f"INFO: Start generating negative samples: {split_mode} --- {neg_sample_strategy}"
     )
     neg_sampler.generate_negative_samples(
-        pos_edges=data_splits[split_mode], split_mode=split_mode, partial_path=partial_path
+        pos_edges=data_splits[split_mode],
+        split_mode=split_mode,
+        partial_path=partial_path,
     )
     print(
         f"INFO: End of negative samples generation. Elapsed Time (s): {time.time() - start_time: .4f}"
